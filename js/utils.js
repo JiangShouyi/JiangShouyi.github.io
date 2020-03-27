@@ -411,3 +411,8 @@ NexT.utils = {
     return intersectionObserver;
   }
 };
+// 给二级标题前自动加一条分割线
+$(document).ready(function(){
+	// 标题前面添加分隔线
+	$('.post-body h1').before('<hr>');
+});

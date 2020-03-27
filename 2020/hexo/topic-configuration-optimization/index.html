@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"blog.jiangshouyi.com","root":"/","scheme":"Pisces","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="修改调试技巧 在chrome浏览器中按F12，调出审查元素，然后点击最左端的搜索图标，就可以单独页面上查看任意元素的样式。然后再点击元素，就可以在右侧的Styles选项的下方调整其代码，而且改动实时生效，代码改动完页面相应元素马上就会改变，显示出效果，这点非常棒！等到调整满意后就复制相关css代码到别的地方备份一下，因为只要一刷新，页面就会恢复成原来的样子。 如果修改满意后，但是不知道要修改的相">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo主题配置与优化">
+<meta property="og:url" content="http://blog.jiangshouyi.com/2020/hexo/topic-configuration-optimization/index.html">
+<meta property="og:site_name" content="Jiang Shouyi">
+<meta property="og:description" content="修改调试技巧 在chrome浏览器中按F12，调出审查元素，然后点击最左端的搜索图标，就可以单独页面上查看任意元素的样式。然后再点击元素，就可以在右侧的Styles选项的下方调整其代码，而且改动实时生效，代码改动完页面相应元素马上就会改变，显示出效果，这点非常棒！等到调整满意后就复制相关css代码到别的地方备份一下，因为只要一刷新，页面就会恢复成原来的样子。 如果修改满意后，但是不知道要修改的相">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-03-27T08:43:05.000Z">
+<meta property="article:modified_time" content="2020-03-27T08:43:05.000Z">
+<meta property="article:author" content="蒋寿义">
+<meta property="article:tag" content="Hexo">
+<meta property="article:tag" content="Theme">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://blog.jiangshouyi.com/2020/hexo/topic-configuration-optimization/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Hexo主题配置与优化 | Jiang Shouyi</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Jiang Shouyi</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">蒋寿义的数学之旅</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://blog.jiangshouyi.com/2020/hexo/topic-configuration-optimization/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="蒋寿义">
+      <meta itemprop="description" content="这是蒋老师的一个记录自己学习数学、LaTeX以及随笔的一个网站">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jiang Shouyi">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Hexo主题配置与优化
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-03-27 16:43:05" itemprop="dateCreated datePublished" datetime="2020-03-27T16:43:05+08:00">2020-03-27</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="修改调试技巧"><a class="markdownIt-Anchor" href="#修改调试技巧"></a> 修改调试技巧</h1>
+<p>在<code>chrome</code>浏览器中按<code>F12</code>，调出审查元素，然后点击最左端的搜索图标，就可以单独页面上查看任意元素的样式。然后再点击元素，就可以在右侧的<code>Styles</code>选项的下方调整其代码，而且改动实时生效，代码改动完页面相应元素马上就会改变，显示出效果，这点非常棒！等到调整满意后就复制相关css代码到别的地方备份一下，因为只要一刷新，页面就会恢复成原来的样子。</p>
+<p>如果修改满意后，但是不知道要修改的相关代码具体在哪个文件，可以去<a href="https://github.com/theme-next/hexo-theme-next" target="_blank" rel="noopener">next</a>主题<a href="https://github.com/theme-next/hexo-theme-next" target="_blank" rel="noopener">github地址</a>在<code>This repository</code>中搜索相关代码，然后就知道相关代码所在的文件路径了。</p>
+<a id="more"></a>
+<h1 id="添加网站小图标"><a class="markdownIt-Anchor" href="#添加网站小图标"></a> 添加网站小图标</h1>
+<p>到<code>D:\hexo\themes\next\layout\_partial</code>编辑<code>head.ejs</code>文件，按<code>Ctrl＋f</code>查找关键词<code>favicon</code>，找到在第28行和第29行。<br />
+在 <code>&lt;% if (theme.favicon){ %&gt;</code>的下面插入以下代码：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"&lt;%- config.root %&gt;favicon.ico"</span> <span class="attr">rel</span>=<span class="string">"icon"</span> <span class="attr">type</span>=<span class="string">"image/x-ico"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>即变成：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;% <span class="keyword">if</span> (theme.rss)&#123; %&gt;</span><br><span class="line">    &lt;link rel=<span class="string">"alternative"</span> href=<span class="string">"&lt;%- theme.rss %&gt;"</span> title=<span class="string">"&lt;%= config.title %&gt;"</span> type=<span class="string">"application/atom+xml"</span>&gt;</span><br><span class="line">    &lt;% &#125; %&gt;</span><br><span class="line">  &lt;% <span class="keyword">if</span> (theme.favicon)&#123; %&gt;</span><br><span class="line">    &lt;link href=<span class="string">"&lt;%- config.root %&gt;favicon.ico"</span> rel=<span class="string">"icon"</span> type=<span class="string">"image/x-ico"</span>&gt;</span><br><span class="line">  &lt;% &#125; %&gt;</span><br><span class="line">  &lt;%- css(<span class="string">'css/style'</span>) %&gt;</span><br></pre></td></tr></table></figure>
+<p>然后在网上找个好看的图标，或者去图标生成网站：<a href="http://www.faviconer.com" target="_blank" rel="noopener">http://www.faviconer.com</a>生成一个后缀名为<code>.ico</code>的图标文件，最后把该文件放到<code>D:\hexo\source</code>目录下，重新部署即可。</p>
+<h1 id="添加自定义404页面"><a class="markdownIt-Anchor" href="#添加自定义404页面"></a> 添加自定义404页面</h1>
+<p>直接新建一个<code>404.html</code>文件放到<code>D:\hexo\source</code>目录下，然后编辑即可，注意最上面要写：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">layout: <span class="literal">false</span></span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+<h1 id="修改正文字体大小及调整行间距"><a class="markdownIt-Anchor" href="#修改正文字体大小及调整行间距"></a> 修改正文字体大小及调整行间距</h1>
+<p>在 <code>D:\hexo\themes\next\source\css\_variables.styl</code> 中的第34行，改为 <code>font-size = 16px</code>，然后顺便把正文的行间距也一起改了：<code>line-height = 1.8em</code>。</p>
+<p>但是改了后所有的行间距都变成 <code>1.8em</code> 了，我想把侧边栏的文字的行间距改小一点，于是去 <code>D:\hexo\themes\next\source\css\_partial\sidebar.styl</code> 修改 <code>.widget</code> 下为 <code>line-height: 1.6em</code> ，注意还要删掉 <code>@extend $base-style</code> 这一行才能起效果。</p>
+<h1 id="修改副标题字体大小和颜色"><a class="markdownIt-Anchor" href="#修改副标题字体大小和颜色"></a> 修改副标题字体大小和颜色</h1>
+<h2 id="修改副标题字体颜色"><a class="markdownIt-Anchor" href="#修改副标题字体颜色"></a> 修改副标题字体颜色</h2>
+<ul>
+<li>
+<p>我想修改副标题的字体颜色，这里推荐给大家一个办法:<br />
+先去翻译 “副标题字体颜色”，结果会出来 “Subtitle font color” ，</p>
+</li>
+<li>
+<p>然后去 <code>hexo-theme-landscape</code>，在上方的搜索框搜索 <code>Subtitle font color</code> 回车，</p>
+</li>
+<li>
+<p>然后我们就找到了修改字体颜色的目录为 <code>themes/next/source/css/_partial/header.styl</code>，</p>
+</li>
+<li>
+<p>接着去我们自己相应的主题目录编辑 <code>D:\hexo\themes\next\source\css\_partial\header.styl</code>文件，还是搜索关键字 `subtitle ，找到第60行修改为：</p>
+</li>
+</ul>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">##subtitle</span><br><span class="line">  @extend <span class="variable">$logo</span>-text</span><br><span class="line">  <span class="attribute">font-size</span>: subtitle-size</span><br><span class="line">  <span class="attribute">line-height</span>: subtitle-size</span><br><span class="line">  <span class="attribute">letter-spacing</span>: <span class="number">5px</span></span><br><span class="line">  <span class="attribute">color</span>: #<span class="number">#fff</span></span><br></pre></td></tr></table></figure>
+<p>其中 <code>letter-spacing</code> 是字符间距，你可以调整它试一下，颜色 <code>color</code> 改为 <code>##fff</code> 白色，和主标题一致。</p>
+<h2 id="修改副标题字体大小"><a class="markdownIt-Anchor" href="#修改副标题字体大小"></a> 修改副标题字体大小</h2>
+<p>因为副标题字体大小的英语是 <code>subtitle size</code>，所以同样在 <a href="https://github.com/theme-next/hexo-theme-next" target="_blank" rel="noopener">next</a>主题<a href="https://github.com/theme-next/hexo-theme-next" target="_blank" rel="noopener">github地址</a> 中搜索 <code>subtitle size</code>，得到结果页面，很明显看出要修改主题目录下的 <code>source/css/_variables.styl</code>文件，于是查找 <code>subtitle</code> 后把 <code>16px</code> 改为 <code>20px</code>：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Header</span></span><br><span class="line">logo-size = <span class="number">40px</span></span><br><span class="line">subtitle-size = <span class="number">20px</span></span><br><span class="line">banner-<span class="attribute">height</span> = <span class="number">300px</span></span><br><span class="line">banner-url = <span class="string">"images/banner.jpg"</span></span><br></pre></td></tr></table></figure>
+<p>经过测试可以知道上面的 <code>logo-size</code> 表示你的主标题字体大小，而你的主题目录 <code>/source/css/_partial/header.styl</code> 文件中 <code>logo-text</code> 那一栏的下面 <code>color</code>就表示主标题字体的颜色。</p>
+<p>这里一定要提醒各位：<code>=</code> 和 <code>:</code> 后面一定要加个空格。</p>
+<p>修改后保存文件，然后在博客目录执行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</span><br></pre></td></tr></table></figure>
+<p>重新部署后，刷新就会看到效果了。</p>
+<h1 id="调整右侧边栏顺序"><a class="markdownIt-Anchor" href="#调整右侧边栏顺序"></a> 调整右侧边栏顺序</h1>
+<p>编辑主题配置文件，比如你使用的默认主题，就到 <code>D:\hexo\themes\next\_config.yml</code> 调整 <code>widgets:</code> 那一栏的顺序。</p>
+<p>原来的：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">widgets:</span><br><span class="line"><span class="bullet">- </span>category</span><br><span class="line"><span class="bullet">- </span>tagcloud</span><br><span class="line"><span class="bullet">- </span>archive</span><br><span class="line"><span class="bullet">- </span>recent_posts</span><br></pre></td></tr></table></figure>
+<p>改为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">widgets:</span><br><span class="line">- recent_posts</span><br><span class="line">- category</span><br><span class="line">- archive</span><br><span class="line">- tagcloud</span><br></pre></td></tr></table></figure>
+<h1 id="页面底部添加自定义文字"><a class="markdownIt-Anchor" href="#页面底部添加自定义文字"></a> 页面底部添加自定义文字</h1>
+<p>打开 <code>D:\hexo\themes\next\layout\_partial\footer.ejs</code>,在最底下 <code>&lt;/div&gt;</code> 的下面和 <code>&lt;/footer&gt;</code> 上面之间插入以下代码：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"font-family:楷体; font-size: 28px; position:relative; left: 350px;bottom:70px;"</span>&gt;</span>人不是因为没有信念而失败，而是因为不能把信念化成行动，并且坚持到底。</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"font-family:楷体; font-size: 28px; position:relative; left: 920px;bottom:50px;"</span>&gt;</span>——戴尔·卡耐基《人性的弱点》</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h1 id="修改返回顶部图标位置"><a class="markdownIt-Anchor" href="#修改返回顶部图标位置"></a> 修改返回顶部图标位置</h1>
+<p>觉得返回顶部图标的位置太高了，要调低点。</p>
+<p>打开 <code>D:\hexo\themes\next\source\css\_partial\totop.styl</code>，第5行改为 <code>bottom 2em</code>。</p>
+<h1 id="修改文章主题样式细节"><a class="markdownIt-Anchor" href="#修改文章主题样式细节"></a> 修改文章主题样式细节</h1>
+<h2 id="添加标题顶部日期和分类的图标"><a class="markdownIt-Anchor" href="#添加标题顶部日期和分类的图标"></a> 添加标题顶部日期和分类的图标</h2>
+<p>打开 <code>D:\hexo\themes\next\source\css\_partial\article.styl</code> 文件，修改 <code>.article-date</code> （第16行）为：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&amp;:before</span><br><span class="line">  <span class="attribute">font-family</span>: font-icon</span><br><span class="line">  <span class="attribute">color</span>: #<span class="number">#ccc</span></span><br><span class="line">  <span class="attribute">content</span>: <span class="string">"\f073"</span></span><br></pre></td></tr></table></figure>
+<p><code>.article-category</code> 大概是第27行:</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&amp;:before</span><br><span class="line">  <span class="attribute">font-family</span>: font-icon</span><br><span class="line">  <span class="attribute">content</span>: <span class="string">"\f06c"</span></span><br></pre></td></tr></table></figure>
+<p>顺便调整一下日期前面图标的位置：<code>margin-left: 20px</code>。</p>
+<h2 id="修改文章底部标签前面的图标"><a class="markdownIt-Anchor" href="#修改文章底部标签前面的图标"></a> 修改文章底部标签前面的图标</h2>
+<p>···stylus<br />
+.article-tag-list-link<br />
+a&amp;:hover<br />
+color: color-link<br />
+&amp;:before<br />
+content: “@”</p>
+<figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="title">这个图标我们使用特殊符号，而不使用 `FontAwesome` 图标，就不用写 `font-family:</span> font-icon` 这一行代码，反之则要写。</span><br><span class="line"></span><br><span class="line">直接把你要使用的特殊符号粘贴进 `content` 的双引号之间就行了。</span><br><span class="line"></span><br><span class="line">**注意：**</span><br><span class="line"></span><br><span class="line"><span class="number">1</span>. 粘贴特殊符号时，在 `notepad++` 里是显示为 `□`，但是部署或者启动服务预览后会显示出来。</span><br><span class="line"></span><br><span class="line"><span class="number">2</span>. 上面的 `a&amp;:hover color: color-link` 是指鼠标滑过时，会显示链接颜色。</span><br><span class="line"></span><br><span class="line"><span class="number">3</span>. 查找一些常见的 `FontAwesome` 图标对应的CSS代码可以搜索关键词 `FontAwesome CSS content values`。参见文章底部的附录。</span><br><span class="line"></span><br><span class="line">## 标题前面加条蓝线</span><br><span class="line"></span><br><span class="line">修改 `.article-header` 条目，添加 `border-left`这一行：</span><br><span class="line"></span><br><span class="line">```stylus</span><br><span class="line">.article-header</span><br><span class="line"><span class="title">  padding:</span> article-padding article-padding <span class="number">0</span></span><br><span class="line"><span class="title">  border-left:</span> <span class="number">5</span>px solid color-twitter     //标题前面加条蓝线</span><br></pre></td></tr></table></figure>
+<p>其中 <code>color-twitter在D:\hexo\themes\next\source\css\_variables.styl</code> 第21行为蓝色，你也可以修改为其他颜色或者自定义一个新的颜色属性。</p>
+<h2 id="修改文章正文字体为宋体"><a class="markdownIt-Anchor" href="#修改文章正文字体为宋体"></a> 修改文章正文字体为宋体</h2>
+<p>打开 <code>D:\hexo\themes\next\source\css\_partial\article.styl</code> 文件，修改 <code>.article</code> 条目为：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.article</span><br><span class="line">  <span class="attribute">margin</span>: block-margin <span class="number">0</span></span><br><span class="line">  <span class="attribute">font-family</span>: SimSun   //修改正文字体为宋体</span><br><span class="line">  <span class="attribute">letter-spacing</span>: <span class="number">1px</span>   //调整文字间距</span><br></pre></td></tr></table></figure>
+<p>然后修改正文旁边的日期、分类、标题等其他字体为微软雅黑。</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.article-date</span>              <span class="comment">//修改正文旁边的日期字体</span></span><br><span class="line">  <span class="attribute">font-family</span>: <span class="string">"微软雅黑"</span>   //添加这一行</span><br></pre></td></tr></table></figure>
+<p>同样也添加这一行到 <code>.article-category</code>，<code>.article-header</code>，<code>.article-tag-list-item</code>，<code>.article-comment-link</code>，<code>.article-share-link</code> 这些条目中。</p>
+<h2 id="修改文章一到六级标题字体为微软雅黑并且不加粗"><a class="markdownIt-Anchor" href="#修改文章一到六级标题字体为微软雅黑并且不加粗"></a> 修改文章一到六级标题字体为微软雅黑，并且不加粗</h2>
+<p>编辑 <code>D:\hexo\themes\next\source\css\_extend.styl</code> 文件，修改相关代码为如下：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">h1</span><br><span class="line">  <span class="attribute">font-family</span>: <span class="string">"微软雅黑"</span>      </span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">1.5em</span></span><br><span class="line">h2</span><br><span class="line">  <span class="attribute">font-family</span>: <span class="string">"微软雅黑"</span>  </span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">1.5em</span></span><br><span class="line">h3</span><br><span class="line">  <span class="attribute">font-family</span>: <span class="string">"微软雅黑"</span>  </span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">1.3em</span></span><br><span class="line">h4</span><br><span class="line">  <span class="attribute">font-family</span>: <span class="string">"微软雅黑"</span>  </span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">1.2em</span></span><br><span class="line">h5</span><br><span class="line">  <span class="attribute">font-family</span>: <span class="string">"微软雅黑"</span>  </span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">1em</span></span><br><span class="line">h6</span><br><span class="line">  <span class="attribute">font-family</span>: <span class="string">"微软雅黑"</span>  </span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">1em</span></span><br><span class="line">  <span class="attribute">color</span>: color-grey</span><br></pre></td></tr></table></figure>
+<p>然后把他们不加粗只要删掉相关条目下的 <code>font-weight: bold</code> 和 <code>font-weight</code> 类似代码就可以了。</p>
+<p>先在<a href="">next</a>的[github主页]搜索 <code>bold</code>，发现相关代码的文件是 <code>source/css/_extend.styl</code>和 <code>source/css/_partial/article.styl</code>。</p>
+<p>于是删除 <code>source/css/_extend.styl</code> 文件中 <code>$base-style</code> 下的 <code>h1, h2, h3, h4, h5, h6</code> 条目下的 <code>font-weight: bold</code> 代码，注意也要删除下方 <code>h2, h3, h4, h5, h6</code> 条目下的 <code>font-weight: 600</code> 这一行代码。</p>
+<p>接着去 <code>source/css/_partial/article.styl</code> 文件，删除 <code>.article-entry</code> 下的 <code>h1, h2, h3, h4, h5, h6</code> 条目下的 <code>font-weight: bold</code> 代码。</p>
+<p>于是1-6级标题不加粗就完成了。</p>
+<h2 id="修改侧边栏字体为宋体"><a class="markdownIt-Anchor" href="#修改侧边栏字体为宋体"></a> 修改侧边栏字体为宋体</h2>
+<p>打开 <code>themes\next\source\css\_partial\sidebar.styl</code>，在 <code>.widget</code>下方添加一行，如下：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">.widget</span><br><span class="line">  <span class="attribute">font-family</span>: SimSun    //修改侧边栏字体为宋体</span><br></pre></td></tr></table></figure>
+<h2 id="标题字体不加粗"><a class="markdownIt-Anchor" href="#标题字体不加粗"></a> 标题字体不加粗</h2>
+<p>打开 <code>themes\next\source\css\_partial\article.styl</code> 文件，删掉 <code>.article-title</code> 条目下方的 <code>font-weight: bold</code> 这一行。</p>
+<p>修改右侧分类、近期文章等字体为宋体<br />
+打开 <code>themes\next\source\css\_partial\sidebar-aside.styl</code> 文件，修改 <code>.widget-title</code> 条目如下：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.widget-title</span><br><span class="line">  <span class="attribute">font-weight</span>: bold         //字体加粗</span><br><span class="line">  <span class="attribute">font-family</span>: SimSun       //修改字体为宋体</span><br><span class="line">  @extend <span class="variable">$block</span>-caption</span><br></pre></td></tr></table></figure>
+<p>重新部署后，刷新即可。</p>
+<h1 id="附录"><a class="markdownIt-Anchor" href="#附录"></a> 附录</h1>
+<h2 id="特殊符号大全"><a class="markdownIt-Anchor" href="#特殊符号大全"></a> 特殊符号大全</h2>
+<ul>
+<li>
+<p><a href="http://tw.piliapp.com/symbol/" target="_blank" rel="noopener">http://tw.piliapp.com/symbol/</a></p>
+</li>
+<li>
+<p><a href="http://w13.loxa.edu.tw/ctjh930220/" target="_blank" rel="noopener">http://w13.loxa.edu.tw/ctjh930220/</a></p>
+</li>
+<li>
+<p><a href="http://star.gg/special-symbols%5D" target="_blank" rel="noopener">http://star.gg/special-symbols</a></p>
+</li>
+<li>
+<p><a href="http://www.1t2t.com/3t/soft/28.htm" target="_blank" rel="noopener">http://www.1t2t.com/3t/soft/28.htm</a></p>
+</li>
+</ul>
+<h2 id="fontawesome对应css值"><a class="markdownIt-Anchor" href="#fontawesome对应css值"></a> FontAwesome对应CSS值</h2>
+<ul>
+<li>
+<p><a href="http://astronautweb.co/snippet/font-awesome/" target="_blank" rel="noopener">A list of Font Awesome icons and their CSS content values</a></p>
+</li>
+<li>
+<p><a href="http://fortawesome.github.io/Font-Awesome/cheatsheet/" target="_blank" rel="noopener">Every Font Awesome 4.3.0 Icon, CSS Class, &amp; Unicode</a></p>
+</li>
+<li>
+<p><a href="http://navaneeth.me/font-awesome-icons-css-content-values/##.VW2oT9qJjIU" target="_blank" rel="noopener">Font Awesome icons and their CSS content values</a></p>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Hexo/" rel="tag"># Hexo</a>
+              <a href="/tags/Theme/" rel="tag"># Theme</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/LaTex/tikz-line-control/" rel="prev" title="TiKz中线条控制及画多边形">
+      <i class="fa fa-chevron-left"></i> TiKz中线条控制及画多边形
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#修改调试技巧"><span class="nav-number">1.</span> <span class="nav-text"> 修改调试技巧</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#添加网站小图标"><span class="nav-number">2.</span> <span class="nav-text"> 添加网站小图标</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#添加自定义404页面"><span class="nav-number">3.</span> <span class="nav-text"> 添加自定义404页面</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#修改正文字体大小及调整行间距"><span class="nav-number">4.</span> <span class="nav-text"> 修改正文字体大小及调整行间距</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#修改副标题字体大小和颜色"><span class="nav-number">5.</span> <span class="nav-text"> 修改副标题字体大小和颜色</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#修改副标题字体颜色"><span class="nav-number">5.1.</span> <span class="nav-text"> 修改副标题字体颜色</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改副标题字体大小"><span class="nav-number">5.2.</span> <span class="nav-text"> 修改副标题字体大小</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#调整右侧边栏顺序"><span class="nav-number">6.</span> <span class="nav-text"> 调整右侧边栏顺序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#页面底部添加自定义文字"><span class="nav-number">7.</span> <span class="nav-text"> 页面底部添加自定义文字</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#修改返回顶部图标位置"><span class="nav-number">8.</span> <span class="nav-text"> 修改返回顶部图标位置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#修改文章主题样式细节"><span class="nav-number">9.</span> <span class="nav-text"> 修改文章主题样式细节</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#添加标题顶部日期和分类的图标"><span class="nav-number">9.1.</span> <span class="nav-text"> 添加标题顶部日期和分类的图标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改文章底部标签前面的图标"><span class="nav-number">9.2.</span> <span class="nav-text"> 修改文章底部标签前面的图标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改文章正文字体为宋体"><span class="nav-number">9.3.</span> <span class="nav-text"> 修改文章正文字体为宋体</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改文章一到六级标题字体为微软雅黑并且不加粗"><span class="nav-number">9.4.</span> <span class="nav-text"> 修改文章一到六级标题字体为微软雅黑，并且不加粗</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改侧边栏字体为宋体"><span class="nav-number">9.5.</span> <span class="nav-text"> 修改侧边栏字体为宋体</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#标题字体不加粗"><span class="nav-number">9.6.</span> <span class="nav-text"> 标题字体不加粗</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#附录"><span class="nav-number">10.</span> <span class="nav-text"> 附录</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#特殊符号大全"><span class="nav-number">10.1.</span> <span class="nav-text"> 特殊符号大全</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#fontawesome对应css值"><span class="nav-number">10.2.</span> <span class="nav-text"> FontAwesome对应CSS值</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">蒋寿义</p>
+  <div class="site-description" itemprop="description">这是蒋老师的一个记录自己学习数学、LaTeX以及随笔的一个网站</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="mailto:jiangshouyi0920@gmail.com" title="E-Mail → mailto:jiangshouyi0920@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">蒋寿义</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
